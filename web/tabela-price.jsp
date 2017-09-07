@@ -15,7 +15,7 @@
     <body>
         <h1>Tabela Price</h1>
         <%
-        String IdForm = request.getParameter("IdForm");
+        String FormPrice = request.getParameter("FormPrice");
         double capital=0.0, txJuros=0.0;
         int tempo=1;
            try{
@@ -24,7 +24,7 @@
                 txJuros = Double.parseDouble(request.getParameter("txJuros"));                
             }catch(Exception ex){}
         %>
-        <form name="IdForm">
+        <form name="FormPrice">
             <input typp="text" name="capital" value="<%=capital%>" placeholder = "Total em Reais (R$)"><br>
             <input type="number" name="tempo" value="<%=tempo%>" placeholder="Tempo em Meses"><br>
             <input type="number" name="txJuros" value="<%=txJuros%>" placeholder="Taxa de Juros em %(Porcentagem)"><br>
