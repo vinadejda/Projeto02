@@ -13,5 +13,8 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <a href="amortizacao-constante.jsp">Amortização Constante</a>
+        <a href="amortizacao-americana.jsp">Amortização Americana</a>
+        <a href="tabela-price.jsp">Tabela Price</a>
     </body>
 </html>
