@@ -40,7 +40,7 @@
                }catch(Exception ex){%><%="Valor Incorreto"%><%
                 }
             %>
-            <form name="FormPrice" >
+            <form name="FormPrice" action="#hi">
                 <%=url%>
                 <label>Capital:</label><br><input type="text" name="capital" placeholder = "Total em Reais (R$)"><br>
                 <label>Tempo: </label> <br><input type="number" name="tempo" placeholder="Tempo em Meses"><br>
