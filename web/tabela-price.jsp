@@ -32,7 +32,7 @@
                     if(request.getParameter("txJuros") != null){
                         txJuros = Double.parseDouble(request.getParameter("txJuros"));   
                     }
-               }catch(Exception ex){%><span><%="Valor Incorreto"%></span><%
+               }catch(Exception ex){%><span id="alerta"><%="Valor Incorreto. Tente Novamente!"%></span><%
                 } %>
             <form name="FormPrice" action="#hi">
                 <label>Capital:</label><br><input type="text" name="cptInicial" placeholder = "Total em Reais (R$)"><br>
@@ -70,7 +70,7 @@
                         <%}
                     }%>                    
                     <tr>
-                        <th> Total </th><td> - </td><td> <%=df.format(tlAmortizacao)%> </td><td> <%=df.format(tlJuros)%> </td><td><%=df.format(tlPmt)%></td>
+                        <td><b> Total </b></td><td><b> - </b></td><td><b> <%=df.format(tlAmortizacao)%> </b></td><td><b> <%=df.format(tlJuros)%></b> </td><td><b><%=df.format(tlPmt)%></b></td>
                     <tr>
                 </table>
                 <aside id="dados">
