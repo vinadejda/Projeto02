@@ -6,9 +6,8 @@
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.text.DecimalFormat"%>
-<!--%@include file="WEB-INF/header.jspf" %-->
-<!--%@include file="WEB-INF/menu.jspf" %-->
-<!--%@include file="WEB-INF/footer.jspf"%>-->
+<%@include file="WEB-INF/header.jspf" %>
+<%@include file="WEB-INF/menu.jspf" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,15 +19,12 @@
     <body>
         <section class="formulario">
             <h1>Tabela Price</h1>
-            <%
-            String FormPrice = request.getParameter("FormPrice");
-            String url = request.getRequestURL().toString();
-            
-            double capital=0.0, txJuros=0.0;
+            <% String FormPrice = request.getParameter("FormPrice");            
+            double cptInicial=0.0, txJuros=0.0;
             int tempo=1;
                try{
-                    if(request.getParameter("capital") != null){
-                        capital = Double.parseDouble(request.getParameter("capital"));
+                    if(request.getParameter("cptInicial") != null){
+                        cptInicial = Double.parseDouble(request.getParameter("cptInicial"));
                     }
                     if(request.getParameter("tempo") != null){
                         tempo = Integer.parseInt(request.getParameter("tempo"));
@@ -36,40 +32,30 @@
                     if(request.getParameter("txJuros") != null){
                         txJuros = Double.parseDouble(request.getParameter("txJuros"));   
                     }
-
-               }catch(Exception ex){%><%="Valor Incorreto"%><%
-                }
-            %>
+               }catch(Exception ex){%><span><%="Valor Incorreto"%></span><%
+                } %>
             <form name="FormPrice" action="#hi">
-                <%=url%>
-                <label>Capital:</label><br><input type="text" name="capital" placeholder = "Total em Reais (R$)"><br>
+                <label>Capital:</label><br><input type="text" name="cptInicial" placeholder = "Total em Reais (R$)"><br>
                 <label>Tempo: </label> <br><input type="number" name="tempo" placeholder="Tempo em Meses"><br>
                 <label>Taxa de Juros: </label><br><input type="number" name="txJuros" placeholder="Taxa de Juros em %(Porcentagem)"><br>
-                <input type="submit" value="Open Modal">
+                <input type="submit" value="Enviar">
             </form>
-        </section>
-                
-        <%  double saldoDevedor = 0.0, amortizacao = 0.0, tlAmortizacao = 0.0, juros = 0.0, tlJuros=0.0, pmt = 0.0, tlPmt=0.0;
+        </section>                
+        <%  double capital =cptInicial, saldoDevedor = 0.0, amortizacao = 0.0, tlAmortizacao = 0.0, juros = 0.0, tlJuros=0.0, pmt = 0.0, tlPmt=0.0;
             txJuros = txJuros/100;            
-            pmt = capital/((1-(Math.pow((1+txJuros),(-tempo))))/txJuros);  
-             
-             DecimalFormat df = new DecimalFormat("###,###,###.##");
-        %>
-        
+            pmt = cptInicial/((1-(Math.pow((1+txJuros),(-tempo))))/txJuros);              
+            DecimalFormat df = new DecimalFormat("###,###,###.##"); %>
         <section id="hi" class="tabela">
             <a href="#" id="btnfechar">X</a>
-            <div id="conteudo">
-                
+            <aside id="conteudo">   
+                <h1>Resultado: </h1>
                 <table border='1'>
                     <tr><th>Período</th><th>Saldo devedor(R$)</th><th>Amortização(R$)</th><th>Juros(R$)</th><th>Prestação(R$)</th></tr>
-                    
                     <% for(int i=0; i<=tempo; i++){
-                        if(i==0){ %>
-                    
+                        if(i==0){ %>                    
                             <tr>
                                 <td> <%=i%> </td><td> <%=df.format(capital)%> </td><td> - </td><td> - </td><td> - </td>
-                            <tr>
-                                
+                            <tr>                                
                         <%}
                         else{
                             juros = capital*txJuros; 
@@ -77,21 +63,24 @@
                             amortizacao = pmt-juros;
                             tlAmortizacao = tlAmortizacao+amortizacao;
                             capital = capital-amortizacao;
-                            tlPmt = tlPmt+pmt;
-                        %>
-                        
+                            tlPmt = tlPmt+pmt; %>                        
                             <tr>
                                 <td> <%=i%> </td><td> <%=df.format(capital)%> </td><td> <%=df.format(amortizacao)%> </td><td> <%=df.format(juros)%> </td><td><%=df.format(pmt)%></td>
-                            <tr>
-                                
+                            <tr>                                
                         <%}
-                    }%>
-                    
+                    }%>                    
                     <tr>
-                        <td> Total </td><td> - </td><td> <%=df.format(tlAmortizacao)%> </td><td> <%=df.format(tlJuros)%> </td><td><%=df.format(tlPmt)%></td>
+                        <th> Total </th><td> - </td><td> <%=df.format(tlAmortizacao)%> </td><td> <%=df.format(tlJuros)%> </td><td><%=df.format(tlPmt)%></td>
                     <tr>
                 </table>
-            </div>
+                <aside id="dados">
+                    <h2> Dados:</h2>
+                    Capital: R$ <%=df.format(cptInicial)%><br>
+                    Tempo: <%=tempo%> meses<br>
+                    Taxa de Juros: <%=txJuros*100%>%<br>
+                </aside>
+            </aside>
         </section>
+        <%@include file="WEB-INF/footer.jspf"%>
     </body>
 </html>
