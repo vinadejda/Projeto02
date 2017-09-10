@@ -23,20 +23,26 @@ nav{
     float: right;
     margin-top:-3.5%;
     width: 45%;
-    position: relative;
-    
+    position: relative;  
 }
 
 a{
     color: #000;
     padding: 1%;
     padding-right: 2%;
-    float:left;
-    
+    float:left;   
 }
 span{
     color: red;
+    float: left;
 }
+
+#alerta{
+    margin-right:5%;
+    float: right;
+    position: relative;
+}
+
 .formulario{    
     float: left;
     width: 100%;
@@ -93,21 +99,13 @@ input[type=submit]{
 #btnfechar{
     text-decoration: none;
     float: right;
-    margin-top: 6%;
-    margin-right: 8%;
-    font-size: 35px;
+    margin-top: 1%;
+    margin-right: 4%;
+    font-size: 1.5em;
     font-weight: bold;
     color: #fff;
-    background: #000;
-    -webkit-border-radius: 24px;
-    -moz-border-radius: 24px;
-    border-radius: 24px;
-    width: 3%;
     z-index: 8;
     position: relative;
-    text-align: center;
-    
-    
    }
 
 .tabela {
@@ -129,6 +127,18 @@ table{
     float: left;
     width: 75%;
     text-align: center;
+    border-collapse: collapse;
+    border-radius: 5px;
+  
+}
+th, td{
+    padding: 0.8%;
+    border-bottom: 1px;
+    border:0px;
+    border-bottom: 1px solid #ddd;
+}
+th{
+    background-color: #00cccc;
 }
 h2{
     font-size: 1em;
