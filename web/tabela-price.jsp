@@ -32,7 +32,7 @@
                     if(request.getParameter("txJuros") != null){
                         txJuros = Double.parseDouble(request.getParameter("txJuros"));   
                     }
-               }catch(Exception ex){%><span id="alerta"><%="Valor Incorreto. Tente Novamente!"%></span><%
+   }catch(Exception ex){%><span id="hi" class="tabela"><span id="alerta"><%="Valor Incorreto."%><a href="#"><button>Tentar Novamente</button></a></span></span><%
                 } %>
             <form name="FormPrice" action="#hi">
                 <label>Capital:</label><br><input type="text" name="cptInicial" placeholder = "Total em Reais (R$)"><br>

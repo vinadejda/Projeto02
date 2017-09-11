@@ -15,7 +15,20 @@
         <title>Home</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <section id="aplicacao">
+            <h1>Sistema de Amortização</h2> 
+            <h2>Definição: São modelos de pagamentos de prestações de um empréstimo</h2>
+            <p><b>Sistema de Amortização Americano:</b> As prestações representam os pagamentos dos juros e a amortização é no final do prazo definido no empréstimo</p>
+            <p><b>Sistema de Amortização Constante:</b> Os pagamentos da amortização são fixas e os juros são crescentes e as prestações decrescentes</p>
+            <p><b>Sistema Price:</b> Os pagamentos das prestações são fixas e a amortização crescente e os juros são decrescentes</p>
+        </section>
+        <section id="equipe">
+            <h1>Integrantes:</h1>
+            <h2> Gabriel Daichi</h2>
+            <h2>Leonardo Umbelino</h2>
+            <h2>Vitória Nadejda</h2>
+        </section>
+
         <%@include file="WEB-INF/footer.jspf" %>
     </body>
 </html>
