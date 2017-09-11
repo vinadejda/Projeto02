@@ -78,6 +78,10 @@
                     Capital: R$ <%=df.format(cptInicial)%><br>
                     Tempo: <%=tempo%> meses<br>
                     Taxa de Juros: <%=txJuros*100%>%<br>
+                    <br>
+                    Total gasto em Amortização: <%=df.format(tlAmortizacao)%> <br>
+                    Total gasto em Juros: <%=df.format(tlJuros)%><br>
+                    Valor Total: <%=df.format(tlPmt)%>
                 </aside>
             </aside>
         </section>

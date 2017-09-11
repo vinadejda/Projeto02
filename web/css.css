@@ -18,7 +18,7 @@ header{
     background-color: #9C27B0;
     height: 10%;
     float:left;
-    font-size: 2em;
+    font-size: 1.9em;
     color: #fff;
 }
 #titulo{
@@ -37,6 +37,7 @@ a{
     padding: 1%;
     padding-right: 2%;
     float:left;   
+    text-decoration: none;
 }
 span{
     color: red;
@@ -61,24 +62,43 @@ button{
 }
 #aplicacao{
     float: left;
-    height: 67%;
+    height: 67.2%;
     width: 50%;
     padding: 3%;
-    background: #cccc00;
 }
-p{
+p{  
+    margin-top:1.5%;
     float: left;
     text-align: justify;
+}
+img{
+    float:left;
+    margin-left:35%;
 }
 
 #equipe{
     float: right;
-    height: 67%;
+    height: 67.2%;
     padding: 3%;
-    width: 35%;
-    background: #00cccc;
+    width: 38%;
+ 
 }
 
+ul{
+    margin-right: 3%;
+    list-style: none;
+    position: relative;
+}
+
+li{
+    padding: 0 0 2%;
+    text-align: justify;
+}
+#detalhes{
+    float: right;
+    margin-top:20%;
+
+}
 .formulario{    
     float: left;
     width: 100%;
@@ -162,7 +182,7 @@ input[type=submit]{
 }
 table{
     float: left;
-    width: 75%;
+    width: 70%;
     text-align: center;
     border-collapse: collapse;
     border-radius: 5px;
@@ -182,9 +202,7 @@ h2{
     font-weight: 300;
 }
 #dados{
-    float: right;
-    margin-right: 5%;
-    
+    float: right;    
 }
 footer{
     margin-top:0.9%;
