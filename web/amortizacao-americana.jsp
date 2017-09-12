@@ -1,38 +1,76 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@include file="WEB-INF/header.jspf" %>
+<%@include file="WEB-INF/menu.jspf" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Amortiza&ccedilão Americana</title>
+        <link rel="stylesheet" type="text/css" href="css.css">
+        <title>Amortização Americana</title>
     </head>
     <body>
-        <%
-            String FormAmericana = request.getParameter("FormAmericana");
-                double saldodevedor=0, txjuros=0;
-                int prestacoes=0;
-                try{
+        <section class="formulario">
+            <h1>Amortização Americana</h1>
+            <% String formAmericana=request.getParameter("formAmericana");
+            double saldodevedor=0.0, jurosP=0.0;
+            int tempo=1;
+            try{
+                if(request.getParameter("Enviar") != null){
                     saldodevedor = Double.parseDouble(request.getParameter("saldodevedor"));
-                    txjuros = Double.parseDouble(request.getParameter("txjuros"));
-                    prestacoes = Integer.parseInt(request.getParameter("prestacoes"));
-                }catch(Exception ex){}
+                    jurosP= Double.parseDouble(request.getParameter("jurosP"));
+                    tempo= Integer.parseInt(request.getParameter("tempo"));
+                }
+            }
+            catch(Exception ex){%><h1>Erro ao ser digitado</h1><%}
+        %>
+            <form name="formAmericana" action="#hi"method="post">
+                <b>Saldo devedor: </b><input type="number" required step="0.01" name="saldodevedor" placeholder="Saldo Devedor(R$)"></br>
+                <b>Juros: </b><input type="number" name="jurosP"  required step="0.001" placeholder="Juros" placeholder="(%)"></br>
+                <b>Tempo: </b><input type="number" required name="tempo" placeholder="Meses"></br>
+                <input type="submit" value="Enviar" name="Enviar">
+            </form>
+        </section>
+            <%
+            double amorti=0.0, prestacao=0.0, jurosD=0.0, juros=0.0,saldoDev=0.0,PrestacaoTotal=0.0, JurosTotal=0.0, AmortizacaoTotal=0.0, ultimaparcela=0.0;
+            jurosD=(jurosP/100);
+            DecimalFormat df = new DecimalFormat("###,###,###.##");
+            %>
             
-           %>
-           <form name="FormAmericana" action="calc">
-               <table>
-                    <tr><td class = "title" colspan = "2"><strong>Amortiza&ccedil;&atilde;o Sistema Americano</strong></td></tr>
-                    <tr><td>Saldo Devedor:</td>
-                        <td><input type="number" style="text-align:center" name="SaldoDevedor" value="" placeholder="Saldo Devedor"><br></td></tr>
-                    <tr><td>Juros:</td>
-                        <td><input type="number" style="text-align:center" name="Juros" value="" placeholder="Taxa de Juros"><br></td></tr>
-                    <tr><td>Tempo em Meses:</td>
-                        <td><input type="number" style="text-align:center" name="Tempo" value="" placeholder="Tempo em Meses"><br></td></tr>    
-                    <tr><td><input type="submit" style="align-content: center" value="Enviar"
-                        <td><input type="reset" style="align-content: center" value="Reset"></td></td></tr>
-              
-                
-              
-               </table>
-        </form>
-        <h1>Hello World!</h1>
+        <section id="hi" class="tabela">
+            <a href="#" id="btnfechar">X</a>
+                <div id="conteudo">
+                    <h3 align="left">Saldo devedor: R$<%=df.format(saldodevedor)%> ; Tempo: <%=tempo%> meses; Juros: <%=jurosP%>%</h3>
+                    <table border="2" >
+                        <tr>
+                            <th>Período</th><th>Prestação</th><th>Juros</th><th>Amortização</th><th>Saldo devedor</th>
+                        </tr>
+                         <tr>
+                            <td>0</td><td>-</td><td>-</td><td>-</td><td><%=df.format(saldodevedor)%></td>
+                        </tr>
+                        <% for(int i=1;i<=tempo;i++){
+                        juros=saldodevedor*jurosD;
+                        prestacao=juros;
+                        saldodevedor=saldoDev;
+                        PrestacaoTotal=PrestacaoTotal+prestacao;
+                        JurosTotal=JurosTotal+juros;
+                        AmortizacaoTotal=saldodevedor;
+                        if(i==tempo){
+                            ultimaparcela=juros+saldodevedor;
+                            saldoDev=0;
+                            amorti=saldodevedor;
+                        }
+                        %>
+                        <tr>
+                            <td><%=i%></td><td><%=df.format(prestacao)%></td><td><%=df.format(juros)%></td><td><%=df.format(amorti)%></td><td><%=df.format(saldoDev)%></td>
+                        </tr>
+                        <%}%>
+                        <tr>
+                            <td>TOTAL</td><td><%=df.format(PrestacaoTotal)%></td><td><%=df.format(JurosTotal)%></td><td><%=df.format(AmortizacaoTotal)%></td><td>-</td>
+                        </tr>
+                    </table>
+                </div>
+        </section>
+        <%@include file="WEB-INF/footer.jspf"%>
     </body>
 </html>
