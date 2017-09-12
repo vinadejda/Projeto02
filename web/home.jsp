@@ -34,8 +34,8 @@ fórmula:</p>
             <h1>Projeto desenvolvido por:</h1>
             <br>
                 <ul>
-                    <li><b>Gabriel Daichi:</b> Responsavél pelo cálculo do Sistema de Amortização Americana</li>
-                    <li><b>Leonardo Umbelino:</b> Responsavél pelo cálculo do Sistema de Amortização Constante</li>
+                    <li><b>Gabriel Daichi:</b> Responsavél pelo cálculo do Sistema de Amortização Constante</li>
+                    <li><b>Leonardo Umbelino:</b> Responsavél pelo cálculo do Sistema de Amortização Americana</li>
                     <li><b>Vitória Nadejda:</b> Responsavél pelo cálculo do Sistema Price e pela Página Home</li>
                 </ul>
             <aside id="detalhes"><i>Programação Orientado a Objeto<br><br>

@@ -27,7 +27,7 @@
                 }
         %>
             <form name="formAmericana" action="#hi"method="post">
-                <label>Saldo Devedor:</label>><input type="number" required step="0.01" name="saldodevedor" placeholder="Saldo Devedor(R$)"></br>
+                <label>Saldo Devedor:</label><input type="number" required step="0.01" name="saldodevedor" placeholder="Saldo Devedor(R$)"></br>
                 <label>Juros:</label><input type="number" name="jurosP"  required step="0.001" placeholder="Juros" placeholder="(%)"></br>
                 <label>Tempo:</label><input type="number" required name="tempo" placeholder="Meses"></br>
                 <input type="submit" value="Enviar" name="Enviar">
