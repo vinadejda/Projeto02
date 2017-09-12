@@ -13,7 +13,8 @@
         <section class="formulario">
             <h1>Amortização Americana</h1>
             <% String formAmericana=request.getParameter("formAmericana");
-            double saldodevedor=0.0, jurosP=0.0;
+            double saldodevedor=0.0, jurosP=0.0, saldoDevFinal=0, saldoDev=0.0;
+            saldodevedor=saldoDev;
             int tempo=1;
             try{
                 if(request.getParameter("Enviar") != null){
@@ -23,17 +24,18 @@
                 }
             }
             catch(Exception ex){%><span id="hi" class="tabela"><span id="alerta"><%="Valor Incorreto."%><a href="#"><button>Tentar Novamente</button></a></span></span><%
-                
+                }
         %>
             <form name="formAmericana" action="#hi"method="post">
                 <label>Saldo Devedor:</label>><input type="number" required step="0.01" name="saldodevedor" placeholder="Saldo Devedor(R$)"></br>
                 <label>Juros:</label><input type="number" name="jurosP"  required step="0.001" placeholder="Juros" placeholder="(%)"></br>
                 <label>Tempo:</label><input type="number" required name="tempo" placeholder="Meses"></br>
                 <input type="submit" value="Enviar" name="Enviar">
+                
             </form>
         </section>  
             <%
-            double amorti=0.0, prestacao=0.0, jurosD=0.0, juros=0.0,saldoDev=0.0,PrestacaoTotal=0.0, JurosTotal=0.0, AmortizacaoTotal=0.0, ultimaparcela=0.0;
+            double amorti=0.0, prestacao=0.0, jurosD=0.0, juros=0.0,PrestacaoTotal=0.0, JurosTotal=0.0, AmortizacaoTotal=0.0, ultimaparcela=0.0, sdfinal=0.0;
             jurosD=(jurosP/100);
             DecimalFormat df = new DecimalFormat("###,###,###.##");
             %>
@@ -49,16 +51,18 @@
                          <tr>
                             <td>0</td><td>-</td><td>-</td><td>-</td><td><%=df.format(saldodevedor)%></td>
                         </tr>
+                        
                         <% for(int i=1;i<=tempo;i++){
-                        juros=saldodevedor*jurosD;
+                        juros = jurosD*saldodevedor;
+                        saldoDev = saldodevedor;
                         prestacao=juros;
-                        saldodevedor=saldoDev;
                         PrestacaoTotal=PrestacaoTotal+prestacao;
                         JurosTotal=JurosTotal+juros;
                         AmortizacaoTotal=saldodevedor;
-                        if(i==tempo){
-                            ultimaparcela=juros+saldodevedor;
-                            saldoDev=0;
+                        sdfinal=saldodevedor;
+                        if(i==tempo){   
+                            PrestacaoTotal=(juros*tempo)+saldodevedor;
+                            saldoDev = 0;
                             amorti=saldodevedor;
                         }
                         %>
