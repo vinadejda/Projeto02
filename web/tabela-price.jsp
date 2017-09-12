@@ -49,7 +49,7 @@
             <a href="#" id="btnfechar">X</a>
             <aside id="conteudo">   
                 <h1>Resultado: </h1>
-                <table border='1'>
+                <table border='2'>
                     <tr><th>Período</th><th>Saldo devedor(R$)</th><th>Amortização(R$)</th><th>Juros(R$)</th><th>Prestação(R$)</th></tr>
                     <% for(int i=0; i<=tempo; i++){
                         if(i==0){ %>                    
@@ -71,7 +71,7 @@
                     }%>                    
                     <tr>
                         <td><b> Total </b></td><td><b> - </b></td><td><b> <%=df.format(tlAmortizacao)%> </b></td><td><b> <%=df.format(tlJuros)%></b> </td><td><b><%=df.format(tlPmt)%></b></td>
-                    <tr>
+                    </tr>
                 </table>
                 <aside id="dados">
                     <h2> Dados:</h2>

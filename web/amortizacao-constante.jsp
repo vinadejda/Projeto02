@@ -28,12 +28,12 @@
                     tempo= Integer.parseInt(request.getParameter("tempo"));
                 }
             }
-            catch(Exception ex){%><h1>Erro ao ser digitado</h1><%}
+            catch(Exception ex){%><span id="hi" class="tabela"><span id="alerta"><%="Valor Incorreto."%><a href="#"><button>Tentar Novamente</button></a></span></span><%}
         %>
             <form name="formConstante" action="#hi"method="post">
-                <b>Saldo devedor: </b><input type="number" required step="0.01" name="capital" placeholder="Saldo Devedor(R$)"></br>
-                <b>Juros: </b><input type="number" name="jurosP"  required step="0.001" placeholder="Juros" placeholder="(%)"></br>
-                <b>Tempo: </b><input type="number" required name="tempo" placeholder="Meses"></br>
+                <label>Saldo devedor: </label><input type="number" required step="0.01" name="capital" placeholder="Saldo Devedor(R$)"></br>
+                <label>Juros: </label><input type="number" name="jurosP"  required step="0.001" placeholder="Juros" placeholder="(%)"></br>
+                <label>Tempo: </label><input type="number" required name="tempo" placeholder="Meses"></br>
                 <input type="submit" value="Enviar" name="Enviar">
             </form>
         </section>
