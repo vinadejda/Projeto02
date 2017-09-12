@@ -22,7 +22,7 @@
                     tempo= Integer.parseInt(request.getParameter("tempo"));
                 }
             }
-           catch(Exception ex){%><span id="hi" class="tabela"><span id="alerta"><%="Valor Incorreto."%><a href="#"><button>Tentar Novamente</button></a></span></span><%
+            catch(Exception ex){%><span id="hi" class="tabela"><span id="alerta"><%="Valor Incorreto."%><a href="#"><button>Tentar Novamente</button></a></span></span><%
         %>
             <form name="formAmericana" action="#hi"method="post">
                 <label>Saldo Devedor:</label><b>Saldo devedor: </b><input type="number" required step="0.01" name="saldodevedor" placeholder="Saldo Devedor(R$)"></br>
@@ -30,7 +30,7 @@
                 <label>Tempo:</label><b>Tempo: </b><input type="number" required name="tempo" placeholder="Meses"></br>
                 <input type="submit" value="Enviar" name="Enviar">
             </form>
-        </section>
+        </section>  
             <%
             double amorti=0.0, prestacao=0.0, jurosD=0.0, juros=0.0,saldoDev=0.0,PrestacaoTotal=0.0, JurosTotal=0.0, AmortizacaoTotal=0.0, ultimaparcela=0.0;
             jurosD=(jurosP/100);
